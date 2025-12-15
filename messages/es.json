@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "title": "Fabrizio Ortiz | Full-Stack Developer",
+    "description": "Ingeniero de Software Junior especializado en desarrollo full-stack con TypeScript, NestJS y Next.js. Construyo soluciones web escalables y modernas."
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Fabrizio Ortiz",
+    "title": "Full-Stack Developer",
+    "description": "Ingeniero de Software especializado en construir aplicaciones web modernas, escalables y de alto rendimiento con TypeScript, NestJS y Next.js.",
+    "cta": {
+      "projects": "Ver Proyectos",
+      "contact": "Contáctame",
+      "cv": "Descargar CV"
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "paragraph1": "Soy un Ingeniero de Software Junior con más de 2 años de experiencia en el desarrollo de aplicaciones full-stack. Me apasiona crear soluciones web que no solo funcionen bien, sino que también ofrezcan una experiencia de usuario excepcional.",
+    "paragraph2": "He construido proyectos completos que integran autenticación segura, bases de datos relacionales, colas de procesamiento, almacenamiento en la nube y frontends modernos con React. Mi enfoque es desarrollar soluciones escalables, bien estructuradas y con código limpio.",
+    "paragraph3": "Actualmente busco mi primer empleo como Desarrollador Full-Stack Junior, donde pueda seguir creciendo profesionalmente y aportar valor desde el primer día."
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Una selección de mis trabajos más relevantes",
+    "otherProjects": "Otros Proyectos",
+    "viewDemo": "Ver Demo",
+    "viewCode": "Ver Código",
+    "items": {
+      "clinica": {
+        "title": "Clinica_Peru",
+        "subtitle": "Sistema de Gestión Médica Full Stack",
+        "description": "Aplicación completa para la gestión de clínicas, permitiendo administrar doctores, pacientes, citas médicas, calendarios, expedientes clínicos, pagos y notificaciones.",
+        "features": [
+          "Backend modular con 20+ módulos NestJS",
+          "Autenticación robusta con JWT y Refresh Tokens",
+          "PostgreSQL + Prisma ORM con 13 entidades",
+          "Sistema asíncrono con BullMQ + Redis",
+          "Almacenamiento con AWS S3",
+          "Frontend con Next.js 15 + React 19"
+        ]
+      },
+      "corredor": {
+        "title": "Corredor Rojo",
+        "subtitle": "Plataforma Web de Transporte",
+        "description": "Plataforma web para la gestión de pagos y pasajes de transporte público, con visualización de rutas en tiempo real y sistema de recarga de tarjetas.",
+        "features": [
+          "React + TypeScript + TailwindCSS",
+          "Backend con Spring Boot",
+          "Integración con Google Maps API",
+          "Autenticación con Google Sign-In",
+          "Base de datos MySQL optimizada",
+          "Liderazgo de equipo de 4 personas"
+        ]
+      },
+      "fakestore": {
+        "title": "FakeStore API",
+        "subtitle": "API REST para E-commerce",
+        "description": "API REST escalable para gestión de tiendas online con funcionalidades CRUD para productos, categorías y usuarios, junto con autenticación JWT.",
+        "features": [
+          "NestJS + TypeScript",
+          "Prisma ORM",
+          "Autenticación JWT",
+          "Docker + Docker Compose",
+          "Documentación Swagger",
+          "CRUD completo"
+        ]
+      },
+      "movieapp": {
+        "title": "MovieApp",
+        "subtitle": "Aplicación Web de Películas",
+        "description": "Aplicación web para visualización de películas utilizando la API de The Movie Database (TMDb) con búsqueda, filtrado y internacionalización.",
+        "features": [
+          "React + Sass",
+          "Integración con API TMDb",
+          "Internacionalización (i18n)",
+          "Infinite Scroll + Lazy Loading",
+          "Componentes reutilizables",
+          "Desplegado en GitHub Pages"
+        ]
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Mi trayectoria profesional y académica",
+    "projectsTitle": "Proyectos",
+    "languages": {
+      "title": "Idiomas",
+      "spanish": "Español",
+      "spanishLevel": "Nativo",
+      "english": "Inglés",
+      "englishLevel": "Técnico Avanzado"
+    },
+    "items": {
+      "clinica": {
+        "role": "Desarrollador Full Stack & Arquitecto",
+        "company": "Clinica_Peru",
+        "period": "Ago 2025 - Dic 2025",
+        "type": "Proyecto Personal"
+      },
+      "corredor": {
+        "role": "Líder de Proyecto & Full Stack",
+        "company": "Corredor Rojo",
+        "period": "Ago 2024 - Nov 2024",
+        "type": "Proyecto Universitario"
+      },
+      "fakestore": {
+        "role": "Desarrollador Backend",
+        "company": "FakeStore API",
+        "period": "Mar 2024 - Jun 2024",
+        "type": "Proyecto Personal"
+      },
+      "movieapp": {
+        "role": "Desarrollador Frontend",
+        "company": "MovieApp",
+        "period": "Ago 2023 - Nov 2023",
+        "type": "Proyecto Personal"
+      }
+    },
+    "education": {
+      "title": "Educación",
+      "utp": {
+        "degree": "Ingeniería de Software",
+        "institution": "Universidad Tecnológica del Perú",
+        "period": "2021 - 2025"
+      },
+      "platzi": {
+        "degree": "Desarrollador Web",
+        "institution": "Escuela de Desarrollo Web en Platzi",
+        "period": "2021 - 2023"
+      }
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "Tecnologías y herramientas que domino",
+    "categories": {
+      "languages": "Lenguajes",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "cloud": "Cloud & DevOps",
+      "tools": "Herramientas"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos!",
+    "followMe": "Sígueme en",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado con éxito!",
+      "error": "Hubo un error. Intenta de nuevo."
+    },
+    "info": {
+      "email": "fabrizioortizo.main@gmail.com",
+      "phone": "(51) 936 889 247",
+      "location": "Perú"
+    }
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "madeWith": "Hecho con",
+    "backToTop": "Volver arriba"
+  }
+}
