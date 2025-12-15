@@ -143,10 +143,11 @@
     "title": "Habilidades",
     "subtitle": "Tecnologías y herramientas que domino",
     "categories": {
-      "languages": "Lenguajes",
+      "languages": "Lenguajes de Programación",
       "frontend": "Frontend",
-      "backend": "Backend",
-      "cloud": "Cloud & DevOps",
+      "backend": "Backend & APIs",
+      "databases": "Bases de Datos",
+      "devops": "DevOps & Cloud",
       "tools": "Herramientas"
     }
   },
@@ -174,7 +175,7 @@
     "info": {
       "email": "fabrizioortizo.main@gmail.com",
       "phone": "(51) 936 889 247",
-      "location": "Perú"
+      "location": "Perú, Lima"
     }
   },
   "footer": {

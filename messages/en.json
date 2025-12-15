@@ -143,10 +143,11 @@
     "title": "Skills",
     "subtitle": "Technologies and tools I master",
     "categories": {
-      "languages": "Languages",
+      "languages": "Programming Languages",
       "frontend": "Frontend",
-      "backend": "Backend",
-      "cloud": "Cloud & DevOps",
+      "backend": "Backend & APIs",
+      "databases": "Databases",
+      "devops": "DevOps & Cloud",
       "tools": "Tools"
     }
   },
@@ -174,7 +175,7 @@
     "info": {
       "email": "fabrizioortizo.main@gmail.com",
       "phone": "(51) 936 889 247",
-      "location": "Peru"
+      "location": "Peru, Lima"
     }
   },
   "footer": {

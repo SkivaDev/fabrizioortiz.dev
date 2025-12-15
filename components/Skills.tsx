@@ -5,68 +5,93 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-// Skills data organized by category
+import {
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiReact,
+  SiNextdotjs,
+  SiAstro,
+  SiTailwindcss,
+  SiRedux,
+  SiNodedotjs,
+  SiNestjs,
+  SiExpress,
+  SiPrisma,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiDocker,
+  SiAmazonwebservices,
+  SiRailway,
+  SiVercel,
+  SiGit,
+  SiGithub,
+  SiSpringboot,
+  SiPostman,
+  SiSwagger,
+  SiReactquery,
+} from "react-icons/si";
+import { FaJava, FaDatabase, FaCode } from "react-icons/fa";
+import { VscVscode } from "react-icons/vsc";
+
+// Skills data organized by category (optimized for recruiter readability)
 const skillsData = {
+  // Core programming languages - what recruiters search for first
   languages: [
-    { name: "TypeScript", icon: "ts" },
-    { name: "JavaScript", icon: "js" },
-    { name: "SQL", icon: "sql" },
-    { name: "HTML5", icon: "html" },
-    { name: "CSS3", icon: "css" },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "JavaScript", icon: SiJavascript },
+    { name: "Java", icon: FaJava },
+    { name: "SQL", icon: FaDatabase },
   ],
+  // Frontend ecosystem - React-focused stack
   frontend: [
-    { name: "React", icon: "react" },
-    { name: "Next.js", icon: "nextjs" },
-    { name: "Astro", icon: "astro" },
-    { name: "TailwindCSS", icon: "tailwind" },
-    { name: "Redux", icon: "redux" },
-    { name: "Zustand", icon: "zustand" },
-    { name: "TanStack Query", icon: "tanstack" },
+    { name: "React", icon: SiReact },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "Astro", icon: SiAstro },
+    { name: "TailwindCSS", icon: SiTailwindcss },
+    { name: "HTML5", icon: SiHtml5 },
+    { name: "CSS3", icon: SiCss3 },
+    { name: "Redux", icon: SiRedux },
+    { name: "Zustand", icon: FaCode },
+    { name: "TanStack Query", icon: SiReactquery },
   ],
+  // Backend & APIs - Node.js + Java ecosystems
   backend: [
-    { name: "Node.js", icon: "nodejs" },
-    { name: "NestJS", icon: "nestjs" },
-    { name: "Express", icon: "express" },
-    { name: "Prisma", icon: "prisma" },
-    { name: "PostgreSQL", icon: "postgres" },
-    { name: "MySQL", icon: "mysql" },
-    { name: "MongoDB", icon: "mongodb" },
+    { name: "Node.js", icon: SiNodedotjs },
+    { name: "NestJS", icon: SiNestjs },
+    { name: "Express", icon: SiExpress },
+    { name: "Spring Boot", icon: SiSpringboot },
   ],
-  cloud: [
-    { name: "Docker", icon: "docker" },
-    { name: "AWS", icon: "aws" },
-    { name: "Railway", icon: "railway" },
-    { name: "Vercel", icon: "vercel" },
-    { name: "Git", icon: "git" },
-    { name: "GitHub", icon: "github" },
+  // Databases & ORM - Data layer expertise
+  databases: [
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "MySQL", icon: SiMysql },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "Prisma", icon: SiPrisma },
   ],
+  // DevOps & Cloud - Deployment capabilities
+  devops: [
+    { name: "Docker", icon: SiDocker },
+    { name: "AWS", icon: SiAmazonwebservices },
+    { name: "Vercel", icon: SiVercel },
+    { name: "Railway", icon: SiRailway },
+  ],
+  // Developer Tools - Daily workflow
   tools: [
-    { name: "Java", icon: "java" },
-    { name: "Spring Boot", icon: "spring" },
-    { name: "Postman", icon: "postman" },
-    { name: "VS Code", icon: "vscode" },
-    { name: "Swagger", icon: "swagger" },
+    { name: "Git", icon: SiGit },
+    { name: "GitHub", icon: SiGithub },
+    { name: "VS Code", icon: VscVscode },
+    { name: "Postman", icon: SiPostman },
+    { name: "Swagger", icon: SiSwagger },
   ],
 };
 
-// Simple icon component using initials/abbreviations
-function SkillIcon({ name }: { name: string }) {
-  // Get first 2-3 characters for icon
-  const getInitials = (name: string) => {
-    if (name === "TypeScript") return "TS";
-    if (name === "JavaScript") return "JS";
-    if (name === "TailwindCSS") return "TW";
-    if (name === "PostgreSQL") return "PG";
-    if (name === "MongoDB") return "MG";
-    if (name === "Spring Boot") return "SB";
-    if (name === "VS Code") return "VS";
-    if (name === "TanStack Query") return "TQ";
-    return name.substring(0, 2).toUpperCase();
-  };
-
+function SkillIcon({ icon: Icon }: { icon: any }) {
   return (
-    <div className="w-10 h-10 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center text-xs font-bold text-[var(--color-text-secondary)]">
-      {getInitials(name)}
+    <div className="w-10 h-10 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center text-[var(--color-text-secondary)] group-hover:text-[var(--color-accent)] transition-colors">
+      <Icon size={20} />
     </div>
   );
 }
@@ -120,10 +145,12 @@ export function Skills() {
                         delay: categoryIndex * 0.1 + skillIndex * 0.05,
                       }}
                       whileHover={{ scale: 1.05, y: -2 }}
-                      className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-text-muted)] transition-colors cursor-default"
+                      className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all cursor-default shadow-sm hover:shadow-md"
                     >
-                      <SkillIcon name={skill.name} />
-                      <span className="text-sm font-medium">{skill.name}</span>
+                      <SkillIcon icon={skill.icon} />
+                      <span className="text-sm font-medium group-hover:text-[var(--color-text-primary)] transition-colors">
+                        {skill.name}
+                      </span>
                     </motion.div>
                   ))}
                 </div>
