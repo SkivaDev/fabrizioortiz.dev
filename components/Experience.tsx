@@ -6,8 +6,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase, GraduationCap } from "lucide-react";
 
-const experienceItems = ["clinica", "corredor", "fakestore", "movieapp"];
-const educationItems = ["utp", "platzi"];
+import { experienceItems, educationItems } from "@/lib/data";
 
 export function Experience() {
   const t = useTranslations("experience");
@@ -33,7 +32,7 @@ export function Experience() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 max-w-6xl mx-auto">
             {/* Work Experience */}
             <div>
               <motion.div
@@ -62,7 +61,7 @@ export function Experience() {
                     <div className="absolute -left-[25px] top-1 w-3 h-3 rounded-full bg-[var(--color-accent)] ring-4 ring-[var(--color-bg-secondary)]" />
 
                     {/* Content */}
-                    <div className="card p-6">
+                    <div className="card p-6 md:p-8">
                       <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                         <h4 className="font-semibold">
                           {t(`items.${item}.role`)}
@@ -110,7 +109,7 @@ export function Experience() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="card p-6"
+                    className="card p-6 md:p-8"
                   >
                     <h4 className="font-semibold mb-1">
                       {t(`education.${item}.degree`)}
@@ -130,7 +129,7 @@ export function Experience() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-8 card p-6"
+                className="mt-8 card p-6 md:p-8"
               >
                 <h4 className="font-semibold mb-4">{t("languages.title")}</h4>
                 <div className="space-y-3">

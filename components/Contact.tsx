@@ -17,6 +17,10 @@ import {
   Linkedin,
 } from "lucide-react";
 
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { contactSchema, type ContactFormData } from "@/lib/schemas";
+
 type FormStatus = "idle" | "sending" | "success" | "error";
 
 export function Contact() {
@@ -26,19 +30,21 @@ export function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
   });
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: ContactFormData) => {
     setFormStatus("sending");
 
     try {
       // EmailJS configuration - Replace with your own keys
-      // Sign up at https://www.emailjs.com/ and get your keys
       await emailjs.sendForm(
         "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
         "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
@@ -47,7 +53,7 @@ export function Contact() {
       );
 
       setFormStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      reset();
 
       // Reset status after 5 seconds
       setTimeout(() => setFormStatus("idle"), 5000);
@@ -79,14 +85,18 @@ export function Contact() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 max-w-6xl mx-auto">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 {/* Name */}
                 <div>
                   <label
@@ -96,18 +106,22 @@ export function Contact() {
                     {t("form.name")}
                   </label>
                   <input
+                    {...register("user_name")}
                     type="text"
                     id="name"
-                    name="user_name"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
                     placeholder={t("form.namePlaceholder")}
-                    required
                     disabled={formStatus === "sending"}
-                    className="input"
+                    className={`input ${
+                      errors.user_name
+                        ? "border-red-500 focus:border-red-500"
+                        : ""
+                    }`}
                   />
+                  {errors.user_name && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {t("validation.name")}
+                    </p>
+                  )}
                 </div>
 
                 {/* Email */}
@@ -119,18 +133,22 @@ export function Contact() {
                     {t("form.email")}
                   </label>
                   <input
+                    {...register("user_email")}
                     type="email"
                     id="email"
-                    name="user_email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
                     placeholder={t("form.emailPlaceholder")}
-                    required
                     disabled={formStatus === "sending"}
-                    className="input"
+                    className={`input ${
+                      errors.user_email
+                        ? "border-red-500 focus:border-red-500"
+                        : ""
+                    }`}
                   />
+                  {errors.user_email && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {t("validation.email")}
+                    </p>
+                  )}
                 </div>
 
                 {/* Message */}
@@ -142,18 +160,22 @@ export function Contact() {
                     {t("form.message")}
                   </label>
                   <textarea
+                    {...register("message")}
                     id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
                     placeholder={t("form.messagePlaceholder")}
-                    required
                     disabled={formStatus === "sending"}
-                    className="input textarea"
+                    className={`input textarea ${
+                      errors.message
+                        ? "border-red-500 focus:border-red-500"
+                        : ""
+                    }`}
                     rows={5}
                   />
+                  {errors.message && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {t("validation.message")}
+                    </p>
+                  )}
                 </div>
 
                 {/* Submit button */}
@@ -198,7 +220,7 @@ export function Contact() {
             >
               {/* Info cards */}
               <div className="space-y-4">
-                <div className="card p-6 flex items-center gap-4">
+                <div className="card p-6 md:p-8 flex items-center gap-5">
                   <div className="p-3 rounded-xl bg-[var(--color-accent-subtle)]">
                     <Mail size={24} className="text-[var(--color-accent)]" />
                   </div>
@@ -215,7 +237,7 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="card p-6 flex items-center gap-4">
+                <div className="card p-6 md:p-8 flex items-center gap-5">
                   <div className="p-3 rounded-xl bg-[var(--color-accent-subtle)]">
                     <Phone size={24} className="text-[var(--color-accent)]" />
                   </div>
@@ -232,7 +254,7 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="card p-6 flex items-center gap-4">
+                <div className="card p-6 md:p-8 flex items-center gap-5">
                   <div className="p-3 rounded-xl bg-[var(--color-accent-subtle)]">
                     <MapPin size={24} className="text-[var(--color-accent)]" />
                   </div>

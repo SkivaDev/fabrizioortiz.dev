@@ -6,50 +6,26 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github, ChevronRight, Play } from "lucide-react";
 
-const projects = [
-  {
-    id: "clinica",
-    color: "#0071e3",
-    gradient: "from-blue-500/20 to-cyan-500/20",
-    tech: ["NestJS", "Next.js 15", "PostgreSQL", "Redis", "AWS S3", "Docker"],
-    github: "https://github.com/SkivaDev/clinica-peru",
-    demo: "#",
-    featured: true,
-  },
-  {
-    id: "corredor",
-    color: "#ff3b30",
-    gradient: "from-red-500/20 to-orange-500/20",
-    tech: ["React", "Spring Boot", "MySQL", "Google Maps API"],
-    github: "https://github.com/SkivaDev/corredor-rojo",
-    demo: "#",
-    featured: true,
-  },
-  {
-    id: "fakestore",
-    color: "#34c759",
-    gradient: "from-green-500/20 to-emerald-500/20",
-    tech: ["NestJS", "Prisma", "JWT", "Docker", "Swagger"],
-    github: "https://github.com/SkivaDev/fakestore-api",
-    demo: "#",
-    featured: false,
-  },
-  {
-    id: "movieapp",
-    color: "#af52de",
-    gradient: "from-purple-500/20 to-pink-500/20",
-    tech: ["React", "Sass", "TMDb API", "i18next"],
-    github: "https://github.com/SkivaDev/movieapp",
-    demo: "#",
-    featured: false,
-  },
-];
+import { projects } from "@/lib/data";
+
+import { ProjectModal } from "@/components";
 
 export function Projects() {
   const t = useTranslations("projects");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+
+  const handleOpenModal = (project: any) => {
+    // Enhance project object with translations before opening
+    setSelectedProject({
+      ...project,
+      title: t(`items.${project.id}.title`),
+      subtitle: t(`items.${project.id}.subtitle`),
+      description: t(`items.${project.id}.description`),
+    });
+  };
 
   return (
     <section id="projects" className="section">
@@ -80,8 +56,8 @@ export function Projects() {
                   initial={{ opacity: 0, y: 40 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center ${
-                    index % 2 === 1 ? "md:grid-flow-dense" : ""
+                  className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
+                    index % 2 === 1 ? "lg:grid-flow-dense" : ""
                   }`}
                 >
                   {/* Project Image/Video Mockup */}
@@ -89,9 +65,11 @@ export function Projects() {
                     className={`relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient} border border-[var(--color-border)] group cursor-pointer`}
                     onMouseEnter={() => setHoveredProject(project.id)}
                     onMouseLeave={() => setHoveredProject(null)}
+                    onClick={() => handleOpenModal(project)}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
+                    {/* ... (mockup content remains same) ... */}
                     {/* Mockup placeholder */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
                       <div className="w-full max-w-md bg-[var(--color-surface)] rounded-xl shadow-lg overflow-hidden border border-[var(--color-border)]">
@@ -186,15 +164,15 @@ export function Projects() {
 
                     {/* Actions */}
                     <div className="flex gap-4">
-                      <motion.a
-                        href={project.demo}
+                      <motion.button
+                        onClick={() => handleOpenModal(project)}
                         className="btn btn-primary"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <ExternalLink size={18} />
-                        {t("viewDemo")}
-                      </motion.a>
+                        <Play size={18} fill="currentColor" />
+                        {t("viewDemo") || "Ver detalles"}
+                      </motion.button>
                       <motion.a
                         href={project.github}
                         target="_blank"
@@ -231,7 +209,7 @@ export function Projects() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    className="card p-6 hover-lift"
+                    className="card p-8 hover-lift"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div>
@@ -254,12 +232,12 @@ export function Projects() {
                         >
                           <Github size={18} />
                         </a>
-                        <a
-                          href={project.demo}
+                        <button
+                          onClick={() => handleOpenModal(project)}
                           className="p-2 rounded-lg hover:bg-[var(--color-bg-tertiary)] transition-colors"
                         >
                           <ExternalLink size={18} />
-                        </a>
+                        </button>
                       </div>
                     </div>
                     <p className="text-sm text-[var(--color-text-secondary)] mb-4">
@@ -278,6 +256,12 @@ export function Projects() {
           </motion.div>
         </div>
       </div>
+
+      <ProjectModal
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        project={selectedProject}
+      />
     </section>
   );
 }

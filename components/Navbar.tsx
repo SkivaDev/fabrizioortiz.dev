@@ -22,9 +22,28 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLocale, setCurrentLocale] = useState("es");
 
-  // Avoid hydration mismatch by waiting until mounted
+  const [activeSection, setActiveSection] = useState("");
+
   useEffect(() => {
     setMounted(true);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    navItems.forEach((item) => {
+      const element = document.getElementById(item);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -101,11 +120,22 @@ export function Navbar() {
               <motion.button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="btn-ghost text-sm"
+                className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                  activeSection === item
+                    ? "text-(--color-text-primary)"
+                    : "text-(--color-text-secondary) hover:text-(--color-text-primary)"
+                }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 {t(item)}
+                {activeSection === item && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-(--color-accent) rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </motion.button>
             ))}
           </div>

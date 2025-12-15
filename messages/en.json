@@ -154,6 +154,11 @@
     "title": "Contact",
     "subtitle": "Have a project in mind? Let's talk!",
     "followMe": "Follow me on",
+    "validation": {
+      "name": "Name must be between 2 and 50 characters",
+      "email": "Please enter a valid email",
+      "message": "Message must be between 10 and 500 characters"
+    },
     "form": {
       "name": "Name",
       "namePlaceholder": "Your name",

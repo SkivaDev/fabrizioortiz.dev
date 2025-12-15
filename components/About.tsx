@@ -36,7 +36,7 @@ export function About() {
           </motion.div>
 
           {/* Content grid */}
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Avatar placeholder */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -95,7 +95,7 @@ export function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                className="card p-6 text-center"
+                className="card p-6 md:p-8 text-center"
               >
                 <item.icon
                   size={24}
