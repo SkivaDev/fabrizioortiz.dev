@@ -246,7 +246,9 @@ export function Contact() {
                       Teléfono
                     </p>
                     <a
-                      href={`tel:${t("info.phone").replace(/\s/g, "")}`}
+                      href={`https://wa.me/51936889247`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="font-medium hover:text-[var(--color-accent)] transition-colors"
                     >
                       {t("info.phone")}

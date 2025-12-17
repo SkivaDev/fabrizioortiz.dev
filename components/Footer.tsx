@@ -19,7 +19,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left: Copyright */}
           <div className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
-            <span>© {currentYear} Fabrizio Ortiz.</span>
+            <span>© {currentYear} Fabrizio Ortiz Orellana.</span>
             <span>{t("rights")}</span>
           </div>
 

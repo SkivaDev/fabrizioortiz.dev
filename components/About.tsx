@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code2, Server, Cloud, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const highlights = [
   { icon: Code2, label: "Frontend", value: "React, Next.js" },
@@ -45,7 +46,7 @@ export function About() {
               className="relative aspect-square max-w-sm mx-auto"
             >
               {/* Profile image placeholder */}
-              <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[var(--color-bg-tertiary)] to-[var(--color-border)] flex items-center justify-center overflow-hidden">
+              {/* <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[var(--color-bg-tertiary)] to-[var(--color-border)] flex items-center justify-center overflow-hidden">
                 <div className="text-center p-8">
                   <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-[var(--color-border)] flex items-center justify-center">
                     <span className="text-4xl font-bold text-[var(--color-text-tertiary)]">
@@ -56,7 +57,14 @@ export function About() {
                     Placeholder para foto de perfil
                   </p>
                 </div>
-              </div>
+              </div> */}
+              <Image
+                src="/images/about-photo.jpg"
+                alt="Fabrizio Ortiz"
+                width={500}
+                height={500}
+                className="rounded-2xl"
+              />
 
               {/* Decorative elements */}
               <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-[var(--color-border)] rounded-2xl -z-10" />

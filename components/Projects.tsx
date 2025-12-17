@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github, ChevronRight, Play } from "lucide-react";
+import Image from "next/image";
 
 import { projects } from "@/lib/data";
 
@@ -56,13 +57,15 @@ export function Projects() {
                   initial={{ opacity: 0, y: 40 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
-                    index % 2 === 1 ? "lg:grid-flow-dense" : ""
-                  }`}
+                  className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
                 >
                   {/* Project Image/Video Mockup */}
                   <motion.div
-                    className={`relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient} border border-[var(--color-border)] group cursor-pointer`}
+                    className={`relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br ${
+                      project.gradient
+                    } border border-[var(--color-border)] group cursor-pointer ${
+                      index % 2 === 1 ? "lg:order-2" : ""
+                    }`}
                     onMouseEnter={() => setHoveredProject(project.id)}
                     onMouseLeave={() => setHoveredProject(null)}
                     onClick={() => handleOpenModal(project)}
@@ -82,17 +85,29 @@ export function Projects() {
                             <div className="h-4 bg-[var(--color-border)] rounded-full max-w-[200px] mx-auto" />
                           </div>
                         </div>
-                        {/* Content area mockup */}
-                        <div className="p-6 space-y-4">
-                          <div className="h-4 bg-[var(--color-border)] rounded w-3/4" />
-                          <div className="h-4 bg-[var(--color-border)] rounded w-1/2" />
-                          <div className="h-20 bg-[var(--color-border)] rounded mt-4" />
-                          <div className="grid grid-cols-3 gap-2">
-                            <div className="h-8 bg-[var(--color-border)] rounded" />
-                            <div className="h-8 bg-[var(--color-border)] rounded" />
-                            <div className="h-8 bg-[var(--color-border)] rounded" />
+                        {/* Content area - Screenshot or Placeholder */}
+                        {project.image ? (
+                          <div className="relative aspect-video w-full">
+                            <Image
+                              src={project.image}
+                              alt={t(`items.${project.id}.title`)}
+                              fill
+                              className="object-cover object-top"
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
                           </div>
-                        </div>
+                        ) : (
+                          <div className="p-6 space-y-4">
+                            <div className="h-4 bg-[var(--color-border)] rounded w-3/4" />
+                            <div className="h-4 bg-[var(--color-border)] rounded w-1/2" />
+                            <div className="h-20 bg-[var(--color-border)] rounded mt-4" />
+                            <div className="grid grid-cols-3 gap-2">
+                              <div className="h-8 bg-[var(--color-border)] rounded" />
+                              <div className="h-8 bg-[var(--color-border)] rounded" />
+                              <div className="h-8 bg-[var(--color-border)] rounded" />
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                       {/* Play button overlay */}
@@ -121,7 +136,7 @@ export function Projects() {
                   </motion.div>
 
                   {/* Project Info */}
-                  <div className={index % 2 === 1 ? "md:col-start-1" : ""}>
+                  <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                     <span
                       className="inline-block text-sm font-medium mb-2"
                       style={{ color: project.color }}
