@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "technologies",
-        "projects"
+        "projects",
+        "hero"
     ]
 }
