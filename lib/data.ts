@@ -16,10 +16,10 @@ export const projects = [
     gradient: "from-red-500/20 to-orange-500/20",
     tech: ["React", "Spring Boot", "MySQL", "Google Maps API"],
     github: "https://github.com/SkivaDev/corredorRojo-transporte-backend",
-    demo: "#",
+    demo: "https://app.arcade.software/share/O5tdDDnQ5Heq1d5rMzEI",
     featured: true,
-    videoId: "",
-    image: "", // Screenshot path
+    videoId: "CBZ4tiq8qS8",
+    image: "/projects/corredorRojo/hero.webp", // Screenshot path
   },
   {
     id: "fakestore",
