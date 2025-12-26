@@ -71,11 +71,20 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Fabrizio Ortiz Portfolio",
       locale: locale === "es" ? "es_PE" : "en_US",
       type: "website",
+      images: [
+        {
+          url: "https://fabrizioortiz.dev/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Fabrizio Ortiz - Full-Stack Developer Portfolio",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: metadata.title,
       description: metadata.description,
+      images: ["https://fabrizioortiz.dev/og-image.jpg"],
     },
     robots: {
       index: true,
