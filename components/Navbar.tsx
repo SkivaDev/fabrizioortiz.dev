@@ -107,10 +107,12 @@ export function Navbar() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            {/* Logo placeholder - replace with your SVG */}
-            <div className="w-8 h-8 rounded-lg bg-(--color-text-primary) flex items-center justify-center">
-              <span className="text-(--color-bg) font-bold text-sm">FO</span>
-            </div>
+            {/* Logo */}
+            <img
+              src="/logo.svg"
+              alt="Fabrizio Ortiz Logo"
+              className="w-9 h-9 rounded-lg"
+            />
             <span className="hidden sm:inline">Fabrizio</span>
           </motion.a>
 
