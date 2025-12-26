@@ -35,7 +35,7 @@
     "viewCode": "Ver Código",
     "items": {
       "clinica": {
-        "title": "Clinica_Peru",
+        "title": "Clínica Perú",
         "subtitle": "Sistema de Gestión Médica Full Stack",
         "description": "Aplicación completa para la gestión de clínicas, permitiendo administrar doctores, pacientes, citas médicas, calendarios, expedientes clínicos, pagos y notificaciones.",
         "features": [

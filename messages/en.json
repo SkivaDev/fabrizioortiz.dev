@@ -35,7 +35,7 @@
     "viewCode": "View Code",
     "items": {
       "clinica": {
-        "title": "Clinica_Peru",
+        "title": "Clinica Peru",
         "subtitle": "Full Stack Medical Management System",
         "description": "Complete application for clinic management, allowing administration of doctors, patients, medical appointments, calendars, clinical records, payments and notifications.",
         "features": [

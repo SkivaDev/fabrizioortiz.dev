@@ -44,12 +44,20 @@ export function Contact() {
     setFormStatus("sending");
 
     try {
-      // EmailJS configuration - Replace with your own keys
+      // EmailJS configuration - Uses environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS configuration is missing");
+      }
+
       await emailjs.sendForm(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        serviceId,
+        templateId,
         formRef.current!,
-        "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
+        publicKey
       );
 
       setFormStatus("success");
