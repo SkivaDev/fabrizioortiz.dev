@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "technologies",
         "projects",
-        "hero"
+        "hero",
+        "contact"
     ]
 }

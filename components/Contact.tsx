@@ -20,6 +20,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, type ContactFormData } from "@/lib/schemas";
+import Image from "next/image";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
@@ -247,7 +248,14 @@ export function Contact() {
 
                 <div className="card p-6 md:p-8 flex items-center gap-5">
                   <div className="p-3 rounded-xl bg-[var(--color-accent-subtle)]">
-                    <Phone size={24} className="text-[var(--color-accent)]" />
+                    {/* <Phone size={24} className="text-[var(--color-accent)]" /> */}
+                    <Image
+                      src="/icons/whatsapp-logo.svg"
+                      alt="WhatsApp Logo"
+                      width={24}
+                      height={24}
+                      className="text-[var(--color-accent)]"
+                    />
                   </div>
                   <div>
                     <p className="text-sm text-[var(--color-text-muted)]">
