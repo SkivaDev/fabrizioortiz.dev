@@ -302,7 +302,7 @@ export function Contact() {
                     <Github size={24} />
                   </motion.a>
                   <motion.a
-                    href="https://linkedin.com/in/fabrizio-ortiz"
+                    href="https://www.linkedin.com/in/fabri-ort-orellana/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-4 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-text-muted)] transition-colors"
