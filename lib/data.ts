@@ -4,7 +4,7 @@ export const projects = [
     color: "#0071e3",
     gradient: "from-blue-500/20 to-cyan-500/20",
     tech: ["NestJS", "Next.js 15", "PostgreSQL", "Redis", "AWS S3", "Docker"],
-    github: "https://github.com/SkivaDev/clinica-peru",
+    github: "https://github.com/SkivaDev/clinicaperu-backend",
     demo: "https://app.clinicaperu.org",
     featured: true,
     videoId: "6KO8qdocUvY",
